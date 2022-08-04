@@ -399,6 +399,7 @@ class data
                             $vergiler[@$Vergi["cac:TaxCategory"]["cac:TaxScheme"]["cbc:TaxTypeCode"].@$Vergi["cbc:Percent"]] = $Vergi;
                         } else {
                             $vergiler[@$Vergi["cac:TaxCategory"]["cac:TaxScheme"]["cbc:TaxTypeCode"].@$Vergi["cbc:Percent"]]["cbc:TaxAmount"] += @$Vergi["cbc:TaxAmount"];
+                            $vergiler[@$Vergi["cac:TaxCategory"]["cac:TaxScheme"]["cbc:TaxTypeCode"].@$Vergi["cbc:Percent"]]["cbc:TaxableAmount"] += @$Vergi["cbc:TaxableAmount"];
                         }
                         $toplamTutar += @$Vergi["cbc:TaxAmount"];
                         $toplamVergiTutari += @$Vergi["cbc:TaxAmount"];
