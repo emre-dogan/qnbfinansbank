@@ -216,10 +216,15 @@ class data
 
     public function setPaymentTerms($data = array())
     {
-        $this->data["cac:PaymentTerms"] = array(
-            "cbc:Note" => $data["Note"],
-            "cbc:PaymentDueDate" => $data["PaymentDueDate"],
-        );
+        if(empty($data)){
+            $this->data["cac:PaymentTerms"] = array();
+        } else {
+            $this->data["cac:PaymentTerms"] = array(
+                "cbc:Note" => $data["Note"],
+                "cbc:PaymentDueDate" => $data["PaymentDueDate"],
+            );
+        }
+
         return $this;
     }
 
