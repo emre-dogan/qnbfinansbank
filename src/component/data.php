@@ -395,10 +395,10 @@ class data
 
                 if (count($Satir["cac:TaxTotal"]["cac:TaxSubtotal"]) > 0) {
                     foreach ($Satir["cac:TaxTotal"]["cac:TaxSubtotal"] as $k => $Vergi) {
-                        if (!@$vergiler[@$Vergi["cac:TaxCategory"]["cac:TaxScheme"]["cbc:TaxTypeCode"]]) {
-                            $vergiler[@$Vergi["cac:TaxCategory"]["cac:TaxScheme"]["cbc:TaxTypeCode"]] = $Vergi;
+                        if (!@$vergiler[@$Vergi["cac:TaxCategory"]["cac:TaxScheme"]["cbc:TaxTypeCode"].@$Vergi["cbc:Percent"]]) {
+                            $vergiler[@$Vergi["cac:TaxCategory"]["cac:TaxScheme"]["cbc:TaxTypeCode"].@$Vergi["cbc:Percent"]] = $Vergi;
                         } else {
-                            $vergiler[@$Vergi["cac:TaxCategory"]["cac:TaxScheme"]["cbc:TaxTypeCode"]]["cbc:TaxAmount"] += @$Vergi["cbc:TaxAmount"];
+                            $vergiler[@$Vergi["cac:TaxCategory"]["cac:TaxScheme"]["cbc:TaxTypeCode"].@$Vergi["cbc:Percent"]]["cbc:TaxAmount"] += @$Vergi["cbc:TaxAmount"];
                         }
                         $toplamTutar += @$Vergi["cbc:TaxAmount"];
                         $toplamVergiTutari += @$Vergi["cbc:TaxAmount"];
