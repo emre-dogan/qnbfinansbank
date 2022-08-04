@@ -29,6 +29,10 @@ class data
             "cbc:Note" => array(),
             "cbc:DocumentCurrencyCode" => ($veri["DocumentCurrencyCode"] ? $veri["DocumentCurrencyCode"] : "TRY"),
             "cbc:LineCountNumeric" => 1,
+            "cac:OrderReference" => array(
+                "cbc:ID" => "",
+                "cbc:IssueDate" => "",
+            ),
             "cac:AccountingSupplierParty" => array(
                 "cac:Party" => array(
                     "cbc:WebsiteURI" => "http://www.aaa.com.tr/",
@@ -222,6 +226,20 @@ class data
             $this->data["cac:PaymentTerms"] = array(
                 "cbc:Note" => $data["Note"],
                 "cbc:PaymentDueDate" => $data["PaymentDueDate"],
+            );
+        }
+
+        return $this;
+    }
+
+    public function setOrderReference($data = array())
+    {
+        if(empty($data)){
+            $this->data["cac:OrderReference"] = array();
+        } else {
+            $this->data["cac:OrderReference"] = array(
+                "cbc:ID" => $data["ID"],
+                "cbc:IssueDate" => $data["IssueDate"],
             );
         }
 
