@@ -135,6 +135,7 @@ class data
                 "cbc:TaxExclusiveAmount" => 15.15,
                 "cbc:TaxInclusiveAmount" => 17.88,
                 "cbc:PayableAmount" => 17.88,
+                "cbc:AllowanceTotalAmount" => 0,
             ),
             "cac:InvoiceLine" => array(),
         );
@@ -318,7 +319,7 @@ class data
             "cac:AllowanceCharge" => array(
                 "cbc:ChargeIndicator" => "false",
                 "cbc:MultiplierFactorNumeric" => 0.0,
-                "cbc:Amount" => 0,
+                "cbc:Amount" => $data["AllowanceChargeAmount"],
                 "cbc:BaseAmount" => $data["BaseAmount"],
             ),
             "cac:TaxTotal" => array(
@@ -417,6 +418,22 @@ class data
             "cbc:TaxInclusiveAmount" => $toplamTutar,
             "cbc:PayableAmount" => $toplamTutar,
         );
+
+        return $this;
+    }
+
+    public function setAllowanceTotalAmount($indirim = '')
+    {
+
+        $this->data["cac:LegalMonetaryTotal"]["cbc:AllowanceTotalAmount"] = $indirim;
+
+        return $this;
+    }
+
+    public function setLineExtensionAmount($toplamMalHizmetTutar = '')
+    {
+
+        $this->data["cac:LegalMonetaryTotal"]["cbc:LineExtensionAmount"] = $toplamMalHizmetTutar;
 
         return $this;
     }
