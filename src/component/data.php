@@ -105,6 +105,12 @@ class data
                 "cbc:Note" => "BBB Bank Otomatik Ödeme",
                 "cbc:PaymentDueDate" => "2020-06-30",
             ),
+            "cac:PricingExchangeRate" => array(
+                "cbc:SourceCurrencyCode" => "EUR",
+                "cbc:TargetCurrencyCode" => "TRY",
+                "cbc:CalculationRate" => "18.50",
+                "cbc:Date" => "2022-06-30",
+            ),
             "cac:TaxTotal" => array(
                 "cbc:TaxAmount" => 2.73,
                 "cac:TaxSubtotal" => array(
@@ -241,6 +247,24 @@ class data
             $this->data["cac:OrderReference"] = array(
                 "cbc:ID" => $data["ID"],
                 "cbc:IssueDate" => $data["IssueDate"],
+            );
+        }
+
+        return $this;
+    }
+
+    public function setPricingExchangeRatee($data = array())
+    {
+
+        if(empty($data)){
+            unset($this->data["cac:PricingExchangeRate"]);
+            array_values($this->data);
+        } else {
+            $this->data["cac:PricingExchangeRate"] = array(
+                "cbc:SourceCurrencyCode" => $data["SourceCurrencyCode"],
+                "cbc:TargetCurrencyCode" => $data["TargetCurrencyCode"],
+                "cbc:CalculationRate" => $data["CalculationRate"],
+                "cbc:Date" => $data["Date"],
             );
         }
 

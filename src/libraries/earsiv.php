@@ -105,6 +105,27 @@ class earsiv extends config
     {
         $vergino = $this->data["cac:AccountingCustomerParty"]["cac:Party"]["cac:PartyIdentification"]["cbc:ID"];
         $this->prefix["cac:AccountingCustomerParty"]["cac:Party"]["cac:PartyIdentification"]["cbc:ID"]["value"] = (strlen($vergino) > 10 ? 'TCKN' : 'VKN');
+
+        $currecy = $this->data["cbc:DocumentCurrencyCode"];
+        $this->prefix["cac:LegalMonetaryTotal"]["cbc:LineExtensionAmount"]["value"] = $currecy;
+        $this->prefix["cac:LegalMonetaryTotal"]["cbc:TaxExclusiveAmount"]["value"] = $currecy;
+        $this->prefix["cac:LegalMonetaryTotal"]["cbc:TaxInclusiveAmount"]["value"] = $currecy;
+        $this->prefix["cac:LegalMonetaryTotal"]["cbc:AllowanceTotalAmount"]["value"] = $currecy;
+        $this->prefix["cac:LegalMonetaryTotal"]["cbc:PayableAmount"]["value"] = $currecy;
+
+        $this->prefix["cac:InvoiceLine"]["cbc:InvoicedQuantity"]["value"] = $currecy;
+        $this->prefix["cac:InvoiceLine"]["cbc:LineExtensionAmount"]["value"] = $currecy;
+
+        $this->prefix["cac:TaxTotal"]["cbc:TaxAmount"]["value"] = $currecy;
+
+        $this->prefix["cac:TaxSubtotal"]["cbc:TaxAmount"]["value"] = $currecy;
+        $this->prefix["cac:TaxSubtotal"]["cbc:TaxableAmount"]["value"] = $currecy;
+
+        $this->prefix["cac:AllowanceCharge"]["cbc:Amount"]["value"] = $currecy;
+        $this->prefix["cac:AllowanceCharge"]["cbc:BaseAmount"]["value"] = $currecy;
+
+        $this->prefix["cac:Price"]["cbc:PriceAmount"]["value"] = $currecy;
+
         return $this;
     }
 
