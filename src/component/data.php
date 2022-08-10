@@ -271,6 +271,16 @@ class data
         return $this;
     }
 
+    public function setTaxExemption($data = array())
+    {
+        $this->data["cac:TaxTotal"]["cac:TaxSubtotal"][$data["TaxTypeCode"].$data["Percent"]]["cac:TaxCategory"] += array(
+            "cbc:TaxExemptionReasonCode" => $data["TaxExemptionReasonCode"],
+            "cbc:TaxExemptionReason" => $data["TaxExemptionReason"],
+        );
+
+        return $this;
+    }
+
     public function setInvoiceLine($data = array())
     {
         /* example data
