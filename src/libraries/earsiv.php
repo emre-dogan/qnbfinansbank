@@ -113,7 +113,6 @@ class earsiv extends config
         $this->prefix["cac:LegalMonetaryTotal"]["cbc:AllowanceTotalAmount"]["value"] = $currecy;
         $this->prefix["cac:LegalMonetaryTotal"]["cbc:PayableAmount"]["value"] = $currecy;
 
-        $this->prefix["cac:InvoiceLine"]["cbc:InvoicedQuantity"]["value"] = $currecy;
         $this->prefix["cac:InvoiceLine"]["cbc:LineExtensionAmount"]["value"] = $currecy;
 
         $this->prefix["cac:TaxTotal"]["cbc:TaxAmount"]["value"] = $currecy;
