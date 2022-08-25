@@ -140,8 +140,8 @@ class data
                 "cbc:LineExtensionAmount" => 15.15,
                 "cbc:TaxExclusiveAmount" => 15.15,
                 "cbc:TaxInclusiveAmount" => 17.88,
-                "cbc:PayableAmount" => 17.88,
                 "cbc:AllowanceTotalAmount" => 0,
+                "cbc:PayableAmount" => 17.88,
             ),
             "cac:InvoiceLine" => array(),
         );
@@ -450,6 +450,7 @@ class data
             "cbc:LineExtensionAmount" => $toplamMalHizmetTutar,
             "cbc:TaxExclusiveAmount" => $toplamTutar - $toplamVergiTutari,
             "cbc:TaxInclusiveAmount" => $toplamTutar,
+            "cbc:AllowanceTotalAmount" => 0,
             "cbc:PayableAmount" => $toplamTutar,
         );
 
