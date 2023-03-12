@@ -15,6 +15,8 @@ class earsiv extends config
     private $faturaNo = "";
     private $belgeFormati = "";
 
+    private $eposta = "";
+
     public function __construct()
     {
         parent::__construct();
@@ -98,6 +100,12 @@ class earsiv extends config
     public function setbelgeFormati($data = "")
     {
         $this->belgeFormati = $data;
+        return $this;
+    }
+
+    public function setEposta($data = "")
+    {
+        $this->eposta = $data;
         return $this;
     }
 
@@ -235,6 +243,29 @@ class earsiv extends config
             );
 
             $r = $this->api->faturaIptalEt($this->parametre);
+            $this->return=$r->return;
+        } catch (Exception $e) {
+            $this->errors[__FUNCTION__][0] = $e;
+        }
+        return $this->return;
+    }
+
+    public function callEpostaGonder()
+    {
+        try {
+            $this->input = array(
+                "vkn" => $this->vergiTcKimlikNo,
+                "faturaUuid" => $this->faturaUuid,
+                "faturaNo" => $this->faturaNo,
+            );
+
+            $this->parametre = array(
+                "input" => json_encode($this->input),
+                "ilaveEposta"=> $this->eposta,
+                "tanimliEpostayaGonder"=> 0
+            );
+
+            $r = $this->api->ePostaGonder($this->parametre);
             $this->return=$r->return;
         } catch (Exception $e) {
             $this->errors[__FUNCTION__][0] = $e;
