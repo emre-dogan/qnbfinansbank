@@ -273,7 +273,17 @@ class data
 
     public function setTaxExemption($data = array())
     {
-        $this->data["cac:TaxTotal"]["cac:TaxSubtotal"][@$data["TaxTypeCode"].@$data["Percent"]]["cac:TaxCategory"] += array(
+        $taxSubtotalIndex = $data["TaxTypeCode"] . $data["Percent"];
+
+        if (!isset($this->data["cac:TaxTotal"]["cac:TaxSubtotal"][$taxSubtotalIndex])) {
+            $this->data["cac:TaxTotal"]["cac:TaxSubtotal"][$taxSubtotalIndex] = array();
+        }
+
+        if (!isset($this->data["cac:TaxTotal"]["cac:TaxSubtotal"][$taxSubtotalIndex]["cac:TaxCategory"])) {
+            $this->data["cac:TaxTotal"]["cac:TaxSubtotal"][$taxSubtotalIndex]["cac:TaxCategory"] = array();
+        }
+
+        $this->data["cac:TaxTotal"]["cac:TaxSubtotal"][$taxSubtotalIndex]["cac:TaxCategory"] += array(
             "cbc:TaxExemptionReasonCode" => $data["TaxExemptionReasonCode"],
             "cbc:TaxExemptionReason" => $data["TaxExemptionReason"],
         );
