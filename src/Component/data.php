@@ -63,6 +63,14 @@ class data
                         "cbc:Telefax" => "(212) 925505015",
                         "cbc:ElectronicMail" => "aa@aaa.com.tr",
                     ),
+                    "cac:AgentParty" => array(
+                        "cac:PartyIdentification" => array(
+                            "cbc:ID" => "8720616074",
+                        ),
+                        "cac:PartyName" => array(
+                            "cbc:Name" => "Şube",
+                        ),
+                    ),
                 ),
             ),
             "cac:AccountingCustomerParty" => array(
@@ -185,6 +193,10 @@ class data
                 "PostalZone" => "",
                 "CountryName" => "",
             ),
+            "AgentParty" => array(
+               "PartyIdentification" => "",
+               "PartyName" => "",
+            ),
         );
         */
 
@@ -221,6 +233,21 @@ class data
                 ),
             ),
         );
+
+        if($type == "Supplier") {
+            $this->data["cac:Accounting" . $type . "Party"] = array(
+                "cac:Party" => array(
+                    "cac:AgentParty" => array(
+                        "cac:PartyIdentification" => array(
+                            "cbc:ID" => $data["AgentParty"]["PartyIdentificationID"],
+                        ),
+                        "cac:PartyName" => array(
+                            "cbc:Name" => $data["AgentParty"]["PartyName"],
+                        ),
+                    ),
+                ),
+            );
+        }
 
         return $this;
     }
