@@ -28,6 +28,14 @@ class config
                             "value" => 'VKN',
                         ),
                     ),
+                    'cac:AgentParty' => array(
+                        'cac:PartyIdentification' => array(
+                            "cbc:ID" => array(
+                                "name" => "schemeID",
+                                "value" => 'SUBENO',
+                            ),
+                        ),
+                    ),
                 ),
             ),
             'cac:AccountingCustomerParty' => array(

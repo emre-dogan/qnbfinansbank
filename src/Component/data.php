@@ -70,6 +70,17 @@ class data
                         "cac:PartyName" => array(
                             "cbc:Name" => "Şube",
                         ),
+                        "cac:PostalAddress" => array(
+                            "cbc:ID" => 1,
+                            "cbc:StreetName" => "Papatya Caddesi Yasemin Sokak",
+                            "cbc:BuildingNumber" => "21",
+                            "cbc:CitySubdivisionName" => "Beşiktaş",
+                            "cbc:CityName" => "İstanbul",
+                            "cbc:PostalZone" => "34100",
+                            "cac:Country" => array(
+                                "cbc:Name" => "Türkiye",
+                            ),
+                        ),
                     ),
                 ),
             ),
@@ -234,16 +245,23 @@ class data
             ),
         );
 
-        if($type == "Supplier") {
-            $this->data["cac:Accounting" . $type . "Party"] = array(
-                "cac:Party" => array(
-                    "cac:AgentParty" => array(
-                        "cac:PartyIdentification" => array(
-                            "cbc:ID" => $data["AgentParty"]["PartyIdentificationID"],
-                        ),
-                        "cac:PartyName" => array(
-                            "cbc:Name" => $data["AgentParty"]["PartyName"],
-                        ),
+        if($type == "Supplier" &&  isset($data["AgentParty"])) {
+            $this->data["cac:Accounting" . $type . "Party"]["cac:Party"]["cac:AgentParty"] = array(
+                "cac:PartyIdentification" => array(
+                    "cbc:ID" => $data["AgentParty"]["PartyIdentificationID"],
+                ),
+                "cac:PartyName" => array(
+                    "cbc:Name" => $data["AgentParty"]["PartyName"],
+                ),
+                "cac:PostalAddress" => array(
+                    "cbc:ID" => 1,
+                    "cbc:StreetName" => $data["AgentParty"]["PostalAddress"]["StreetName"],
+                    "cbc:BuildingNumber" => $data["AgentParty"]["PostalAddress"]["BuildingNumber"],
+                    "cbc:CitySubdivisionName" => $data["AgentParty"]["PostalAddress"]["CitySubdivisionName"],
+                    "cbc:CityName" => $data["AgentParty"]["PostalAddress"]["CityName"],
+                    "cbc:PostalZone" => $data["AgentParty"]["PostalAddress"]["PostalZone"],
+                    "cac:Country" => array(
+                        "cbc:Name" => $data["AgentParty"]["PostalAddress"]["CountryName"],
                     ),
                 ),
             );

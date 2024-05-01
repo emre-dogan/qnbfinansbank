@@ -113,7 +113,6 @@ class earsiv extends config
     {
         $vergino = $this->data["cac:AccountingCustomerParty"]["cac:Party"]["cac:PartyIdentification"]["cbc:ID"];
         $this->prefix["cac:AccountingCustomerParty"]["cac:Party"]["cac:PartyIdentification"]["cbc:ID"]["value"] = (strlen($vergino) > 10 ? 'TCKN' : 'VKN');
-        $this->prefix["cac:AccountingSupplierParty"]["cac:Party"]["AgentParty"]["cac:PartyIdentification"]["cbc:ID"]["value"] = 'SUBENO';
 
         $currecy = $this->data["cbc:DocumentCurrencyCode"];
         $this->prefix["cac:LegalMonetaryTotal"]["cbc:LineExtensionAmount"]["value"] = $currecy;
